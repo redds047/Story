@@ -17,7 +17,7 @@ body {
     color: #3b2f2f;
 }
 
-/* Background texture */
+
 body::before {
     content: "";
     position: fixed;
@@ -46,7 +46,7 @@ main {
     gap: 3rem;
 }
 
-/* Slightly different layout: taller, more scroll-like */
+
 .story-strip {
     background: rgba(255, 248, 240, 0.95);
     border: 3px solid #8c6a53;
@@ -56,7 +56,7 @@ main {
     position: relative;
 }
 
-/* Decorative vertical wear line */
+
 .story-strip::before {
     content: "";
     position: absolute;
@@ -73,7 +73,7 @@ main {
     margin: 0;
 }
 
-/* Word-by-word animation */
+
 .story-strip span {
     opacity: 0;
     display: inline-block;
@@ -88,7 +88,7 @@ main {
     }
 }
 
-/* Navigation */
+
 .nav-links {
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@ main {
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.nav-links a:hover {
+
     transform: translateY(-3px) rotate(-1deg);
     background: #5a4033;
 }
@@ -168,3 +168,4 @@ words.forEach((word, index) => {
 
 </body>
 </html>
+
