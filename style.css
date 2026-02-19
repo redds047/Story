@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: "Georgia", serif;
+  background: #2a1f15; /* warm dark wood base */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Graphic Library Background */
+.library {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #3b2b1f 0,
+      #3b2b1f 40px,
+      #2b1f15 40px,
+      #2b1f15 42px
+    ); /* bookshelf pattern */
+}
+
+/* Prompt */
+.prompt {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  color: #f5e7d0;
+  text-shadow: 1px 1px 4px #000;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+/* Sticky Note Fragments */
+.fragment {
+  position: absolute;
+  width: 180px;
+  height: 130px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Show animation */
+.fragment.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.fragment span {
+  font-weight: bold;
+}
+
+/* Hover */
+.fragment:hover {
+  transform: scale(1.1) rotate(0deg);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+  z-index: 10;
+}
+
+/* Sticky Note Styles */
+.sand {
+  background: linear-gradient(135deg, #f5eddc, #efe5d0);
+  color: #3a2f1c;
+  border: 1px solid #d1bfa7;
+}
+
+.ruins {
+  background: linear-gradient(135deg, #6b3b2a, #3a1f16);
+  color: #f2c9a0;
+  border: 1px solid #8c5a3f;
+}
+
+.paths {
+  background: linear-gradient(135deg, #3f5f4a, #1f3328);
+  color: #d9f0e3;
+  border: 1px solid #74806e;
+  text-transform: uppercase;
+}
+
+/* Fragment Placement & Rotation (scattered like a table) */
+.sand.a { top: 12%; left: 10%; transform: rotate(-4deg); }
+.sand.b { top: 12%; left: 32%; transform: rotate(3deg); }
+.sand.c { top: 12%; left: 54%; transform: rotate(-3deg); }
+.sand.d { top: 12%; left: 76%; transform: rotate(4deg); }
+
+.ruins.a { top: 38%; left: 10%; transform: rotate(5deg); }
+.ruins.b { top: 38%; left: 32%; transform: rotate(-5deg); }
+.ruins.c { top: 38%; left: 54%; transform: rotate(4deg); }
+.ruins.d { top: 38%; left: 76%; transform: rotate(-4deg); }
+
+.paths.a { bottom: 18%; left: 10%; transform: rotate(2deg); }
+.paths.b { bottom: 18%; left: 32%; transform: rotate(-3deg); }
+.paths.c { bottom: 18%; left: 54%; transform: rotate(3deg); }
+.paths.d { bottom: 18%; left: 76%; transform: rotate(-2deg); }
