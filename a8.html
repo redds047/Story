@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Circular Ruins — Scroll</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Libre Baskerville', serif;
+  background: linear-gradient(to bottom, #f3e7d3 0%, #e6d6b8 100%);
+  color: #2a2016;
+  overflow-x: hidden;
+  line-height: 1.8;
+  padding: 3rem 5%;
+}
+
+/* subtle paper texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+header {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: #4b2f2f;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 4rem;
+}
+
+/* Story lines container */
+.story {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+/* Each word appears individually */
+.word {
+  opacity: 0;
+  display: inline-block;
+  margin-right: 0.2rem;
+  animation: appear 0.35s forwards;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Choices at the end */
+.choices {
+  text-align: center;
+  margin: 4rem 0;
+}
+
+.choices a {
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  background: #8c6a53;
+  color: #fff9f0;
+  padding: 0.8rem 1.5rem;
+  margin: 0 1rem;
+  border-radius: 6px;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.choices a:hover {
+  transform: translateY(-3px) rotate(-0.5deg);
+  background: #5a4033;
+}
+</style>
+</head>
+<body>
+
+<header>The Circular Ruins</header>
+
+<div class="story" id="storyContainer"></div>
+
+<div class="choices">
+  <a href="a5.html">Next</a>
+  <a href="a7.html">Branch to Book of Sand</a>
+</div>
+
+<script>
+// The story text for the scroll page
+const storyText = `At first, his dreams were chaotic; then in a short while they became dialectic in nature. The stranger dreamed that he was in the center of a circular amphitheater which was more or less the burnt temple; clouds of taciturn students filled the tiers of seats; the faces of the farthest ones hung at a distance of many centuries and as high as the stars, but their features were completely precise. The man lectured his pupils on anatomy, cosmography, and magic: the faces listened anxiously and tried to answer understandingly.`;
+
+const container = document.getElementById('storyContainer');
+const words = storyText.split(' ');
+
+words.forEach((word, i) => {
+  const span = document.createElement('span');
+  span.textContent = word;
+  span.classList.add('word');
+  span.style.animationDelay = `${i * 0.05}s`; // stagger each word
+  container.appendChild(span);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Garden of Forking Paths — Pathways</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Libre Baskerville', serif;
+        background: linear-gradient(to bottom, #f3e7d3, #d9cbb7);
+        color: #3b2f2f;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top:0; left:0;
+        width:100%; height:100%;
+        background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+    header {
+        text-align: center;
+        padding: 2rem 1rem;
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        color: #4b2f2f;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    main {
+        position: relative;
+        width: 100%;
+        padding: 4rem 1rem 6rem 1rem; /* padding bottom to allow space for buttons */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Centered story text */
+    .story-text {
+        max-width: 600px;
+        text-align: center;
+        background: rgba(255,248,240,0.9);
+        padding: 2rem 2.5rem;
+        border: 3px solid #8c6a53;
+        border-radius: 15px;
+        box-shadow: 8px 8px 20px rgba(0,0,0,0.15);
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 4rem; /* space for buttons */
+        z-index: 2;
+        position: relative;
+    }
+
+    /* Pathways container (behind content) */
+    .paths {
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height: 200%; /* make it tall so paths scroll down */
+        z-index: 1;
+    }
+
+    /* Animated lines for pathways */
+    .path {
+        position: absolute;
+        width: 2px;
+        height: 100px;
+        background: #8c6a53;
+        opacity: 0.4;
+        animation: movePath 4s linear infinite;
+    }
+
+    @keyframes movePath {
+        0% { transform: translateY(-120px) rotate(0deg); opacity: 0; }
+        50% { opacity: 0.6; }
+        100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    }
+
+    /* Branching buttons */
+    .choices {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        z-index: 2;
+        position: relative;
+    }
+
+    .choices a {
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        background: #8c6a53;
+        color: #fff9f0;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        text-align: center;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .choices a:hover {
+        transform: translateY(-3px) rotate(-0.5deg);
+        background: #5a4033;
+    }
+
+    footer {
+        text-align:center;
+        padding:2rem;
+        font-style:italic;
+        color:#4b2f2f;
+    }
+</style>
+</head>
+<body>
+<header>
+    The Garden of Forking Paths
+</header>
+<main>
+    <div class="story-text">
+        <p>
+            I sat up on the bed, in senseless and perfect silence, as if Madden was already peering
+            at me. Something - perhaps merely a desire to prove my total penury to myself -
+            made me empty out my pockets. I found just what I knew I was going to find.
+
+        </p>
+    </div>
+
+    <div class="paths">
+        <div class="path" style="left:10%; height:120px; animation-delay:0s;"></div>
+        <div class="path" style="left:30%; height:150px; animation-delay:0.5s;"></div>
+        <div class="path" style="left:50%; height:100px; animation-delay:1s;"></div>
+        <div class="path" style="left:70%; height:130px; animation-delay:1.2s;"></div>
+        <div class="path" style="left:85%; height:110px; animation-delay:1.5s;"></div>
+    </div>
+
+    <div class="choices">
+        <a href="a11.html">Branch to Garden of Forking Paths</a>
+        <a href="a6.html">Branch to Book of Sand</a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2026 Historical Library Experience
+</footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden of Forking Paths - Branching Threads</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f3e7d3, #d9cbb7);
+    font-family: 'Libre Baskerville', serif;
+    color: #3b2f2f;
+    overflow-x: hidden;
+    position: relative;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: #4b2f2f;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.story-block {
+    background: rgba(255, 248, 240, 0.95);
+    border: 3px solid #8c6a53;
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    text-align: center;
+}
+
+.story-block span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(20px);
+    animation: wordFade 0.6s forwards;
+}
+
+@keyframes wordFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation buttons */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    background: #8c6a53;
+    color: #fff9f0;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    background: #5a4033;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
+    color: #4b2f2f;
+    margin-top: 3rem;
+}
+
+/* Branching threads animation */
+.branch-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.branch {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    height: 0;
+    background-color: #5a4033;
+    opacity: 0;
+    border-radius: 1px;
+    animation: growBranch 3s ease forwards;
+}
+
+@keyframes growBranch {
+    0% { height: 0; opacity: 0; }
+    30% { opacity: 1; }
+    100% { height: var(--h); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<header>Garden of Forking Paths</header>
+
+<main>
+    <div class="story-block" id="story-text">
+        <p>
+            <span>"I</span> <span>can</span> <span>prove</span> <span>I'm</span> 
+            <span>not</span> <span>lying,"</span> <span>I</span> <span>said.</span> 
+            <span>"I'm</span> <span>going</span> <span>to</span> <span>tell</span> 
+            <span>you</span> <span>things</span> <span>a</span> <span>stranger</span> 
+            <span>couldn't</span> <span>possibly</span> <span>know.</span>
+        </p>
+    </div>
+
+    <div class="nav-links">
+        <a href="a16.html">Next to Book of Sands</a>
+        <a href="a13.html">Find out more about the Garden</a>
+    </div>
+</main>
+
+<div class="branch-container" id="branch-container"></div>
+
+<footer>© 2026 Historical Library Experience</footer>
+
+<script>
+    // Animate each word in text
+    const words = document.querySelectorAll('#story-text span');
+    words.forEach((word, index) => {
+        word.style.animationDelay = `${index * 0.15}s`;
+    });
+
+    // Branching threads animation
+    const container = document.getElementById('branch-container');
+    const branchCount = 22;
+
+    for(let i = 0; i < branchCount; i++){
+        const branch = document.createElement('div');
+        branch.classList.add('branch');
+
+        const h = Math.random() * 250 + 100; // random height
+        branch.style.setProperty('--h', h + 'px');
+
+        // random horizontal position
+        branch.style.left = Math.random() * 95 + 'vw';
+
+        // random rotation to create subtle forking effect
+        const rot = (Math.random() - 0.5) * 50; // -25 to +25 deg
+        branch.style.transform = `rotate(${rot}deg)`;
+
+        // random animation delay
+        branch.style.animationDelay = (Math.random() * 2) + 's';
+
+        container.appendChild(branch);
+    }
+</script>
+
+</body>
+</html>

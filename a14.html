@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Book of Sand</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f3e7d3, #d9cbb7);
+    font-family: 'Libre Baskerville', serif;
+    overflow-x: hidden;
+    color: #3b2f2f;
+}
+
+/* Background texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: #4b2f2f;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Slightly different layout: taller, more scroll-like */
+.story-strip {
+    background: rgba(255, 248, 240, 0.95);
+    border: 3px solid #8c6a53;
+    border-radius: 18px;
+    padding: 3rem 2.5rem;
+    box-shadow: 8px 8px 22px rgba(0,0,0,0.18);
+    position: relative;
+}
+
+/* Decorative vertical wear line */
+.story-strip::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 22px;
+    width: 2px;
+    background: rgba(140,106,83,0.35);
+}
+
+.story-strip p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Word-by-word animation */
+.story-strip span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(14px);
+    animation: wordFade 0.6s forwards;
+}
+
+@keyframes wordFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    background: #8c6a53;
+    color: #fff9f0;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    background: #5a4033;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-style: italic;
+    color: #4b2f2f;
+    margin-top: 2rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    The Book of Sand
+</header>
+
+<main>
+
+    <div class="story-strip">
+        <p id="sandText">
+            <span>All</span> <span>at</span> <span>once</span> <span>I</span>
+            <span>had</span> <span>the</span> <span>impression</span> <span>according</span>
+            <span>to</span> <span>psychologists</span> <span>it</span> <span>corresponds</span>
+            <span>to</span> <span>a</span> <span>state</span> <span>of</span>
+            <span>fatigue,</span> <span>of</span> <span>having</span> <span>lived</span>
+            <span>that.</span> <span>moment</span> <span>once</span> <span>before.</span>
+            <span>Someone</span> <span>had</span> <span>sat</span> <span>down</span>
+            <span>at</span> <span>the</span> <span>other</span> <span>end</span>
+            <span>of</span> <span>the</span> <span>bench.</span>
+            <span>I</span> <span>would</span> <span>have</span> <span>preferred</span>
+            <span>to</span> <span>be</span> <span>alone,</span>
+            <span>but</span> <span>not</span> <span>wishing</span>
+            <span>to</span> <span>appear</spa
+        </p>
+    </div>
+
+    <div class="nav-links">
+       <a href="a7.html">Continue</a>
+        <a href="home.html">Back to Library</a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Historical Library Experience
+</footer>
+
+<script>
+const words = document.querySelectorAll('#sandText span');
+words.forEach((word, index) => {
+    word.style.animationDelay = `${index * 0.14}s`;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden of Forking Paths</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Libre Baskerville', serif;
+        background: linear-gradient(to bottom, #f3e7d3, #d9cbb7);
+        color: #3b2f2f;
+        line-height: 1.8;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top:0; left:0;
+        width:100%; height:100%;
+        background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+    header {
+        text-align: center;
+        padding: 2rem 1rem;
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        color: #4b2f2f;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .scroll-story {
+        background: rgba(255, 248, 240, 0.95);
+        padding: 2rem 3rem;
+        border-left: 8px solid #8c6a53;
+        border-right: 8px solid #8c6a53;
+        border-radius: 10px;
+        box-shadow: 6px 6px 20px rgba(0,0,0,0.15);
+        font-size: 1.15rem;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .scroll-story p {
+        margin-bottom: 1.5rem;
+        text-indent: 1.5rem;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Floating choice buttons at the bottom */
+    .choices {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+    }
+
+    .choices a {
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        background: #8c6a53;
+        color: #fff9f0;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        text-align: center;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .choices a:hover {
+        transform: translateY(-3px) rotate(-0.5deg);
+        background: #5a4033;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        font-style: italic;
+        color: #4b2f2f;
+    }
+</style>
+</head>
+<body>
+<header>
+    Garden of Forking Paths
+</header>
+<main>
+    <div class="scroll-story">
+        <p>I am a timorous man. I can say it now, now that I have brought my incredibly risky 
+plan to an end. It was not easy to bring about, and I know that its execution was 
+terrible. I did not do it for Germany - no! Such a barbarous country is of no 
+importance to me, particularly since it had degraded me by making me become a spy. 
+Furthermore, I knew an Englishman - a modest man - who, for me, is as great as 
+Goethe. I did not speak with him for more than an hour, but during that time, he 
+was Goethe. </p>
+    </div>
+
+    <div class="choices">
+        <a href="a8.html">Continue Circular Ruins</a>
+        <a href="a7.html">Branch into Book of Sand</a>
+    </div>
+</main>
+<footer>
+    &copy; 2026 Historical Library Experience
+</footer>
+
+<script>
+    // Fade in paragraphs sequentially
+    const paragraphs = document.querySelectorAll('.scroll-story p');
+    paragraphs.forEach((p, index) => {
+        p.style.animationDelay = `${index * 0.5}s`;
+    });
+</script>
+</body>
+</html>

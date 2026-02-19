@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book of Sands — Text Rain</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Libre Baskerville', serif;
+        color: #3b2f2f;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #f3e7d3 0%, #e6d6b8 50%, #d1b899 100%);
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top:0; left:0;
+        width:100%; height:100%;
+        background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+        opacity: 0.15;
+        z-index: -1;
+    }
+
+    header {
+        text-align: center;
+        padding: 2rem 1rem 1rem 1rem;
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        color: #4b2f2f;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .word {
+        position: absolute;
+        font-size: 1.2rem;
+        opacity: 0;
+        white-space: nowrap;
+        pointer-events: none;
+    }
+
+    .line-container {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.3rem;
+        opacity: 0;
+        font-size: 1.3rem;
+        line-height: 1.6;
+    }
+
+    .choices {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 2rem;
+        z-index: 10;
+    }
+
+    .choices a {
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        background: #8c6a53;
+        color: #fff9f0;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .choices a:hover {
+        transform: translateY(-3px) rotate(-0.5deg);
+        background: #5a4033;
+    }
+</style>
+</head>
+<body>
+
+<header>Book of Sands</header>
+
+<div class="line-container" id="lineContainer"></div>
+
+<div class="choices">
+    <a href="a6.html">Continue</a>
+    <a href="a8.html">Branch to Circular Ruins</a>
+</div>
+
+<script>
+const story = "It  was  about  ten  o'clock  in  the  morning.  I  sat  on a  bench  facing  the  Charles  River.  Some  five hundred  yards  distant,  on  my  right,  rose  a  tall building  whose  name  I  never  knew.  Ice  floes  were borne  along  on  the  gray  water.";
+
+
+
+const words = story.split(' ');
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
+
+words.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.classList.add('word');
+    span.textContent = word;
+
+    // START FULLY OPAQUE
+    span.style.opacity = 1;
+
+    const startX = Math.random() * (screenWidth - 100);
+    const startY = Math.random() * -200 - 50; // above viewport
+    span.style.left = startX + 'px';
+    span.style.top = startY + 'px';
+    document.body.appendChild(span);
+
+    // Animate falling and fading out
+    setTimeout(() => {
+        span.style.transition = 'all 2s ease-in-out';
+        const targetY = screenHeight*0.6 + Math.random()*30;
+        span.style.top = targetY + 'px';
+        span.style.opacity = 0; // fade out as it falls
+    }, i * 150);
+});
+
+
+// After all words have "fallen" and disappeared, show final readable line
+setTimeout(() => {
+    const lineContainer = document.getElementById('lineContainer');
+    words.forEach(word => {
+        const span = document.createElement('span');
+        span.textContent = word;
+        lineContainer.appendChild(span);
+    });
+    lineContainer.style.transition = 'opacity 2s ease';
+    lineContainer.style.opacity = 1;
+
+    // remove falling words
+    document.querySelectorAll('.word').forEach(w => w.remove());
+}, words.length*150 + 2000);
+
+</script>
+
+</body>
+</html>

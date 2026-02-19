@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book of Sand — Flowing Sand</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            color: #3b2f2f;
+            overflow: hidden;
+            /* disable scrolling */
+            position: relative;
+            background: linear-gradient(to bottom, #f3e7d3 0%, #e6d6b8 50%, #d1b899 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 0 1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: #4b2f2f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            position: relative;
+            width: 100%;
+            height: calc(100% - 6rem);
+            /* minus header/footer space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* center vertically */
+            align-items: center;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        .story-text {
+            max-width: 700px;
+            text-align: left;
+            background: rgba(255, 248, 240, 0.95);
+            padding: 2rem 3rem;
+            border: 3px solid #8c6a53;
+            border-radius: 15px;
+            box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            z-index: 10;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .word {
+            opacity: 0;
+            display: inline-block;
+            animation: appearWord 0.5s forwards;
+        }
+
+        @keyframes appearWord {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            z-index: 10;
+            position: relative;
+        }
+
+        .choices a {
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            background: #8c6a53;
+            color: #fff9f0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .choices a:hover {
+            transform: translateY(-3px) rotate(-0.5deg);
+            background: #5a4033;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-style: italic;
+            color: #4b2f2f;
+        }
+
+        .sand-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .grain {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #c2a16b;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(var(--sx, 0px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        The Book of Sand — Flowing Sand
+    </header>
+    <main>
+        <div class="story-text" id="story-text">
+            It was in Cambridge, back in February, 1969, that
+            the event took place. I made no attempt to record
+            it at the time, because, fearing for my mind, my
+            initial aim was to forget it. Now, some years later, I
+            feel that if I commit it to paper others will read it
+            as a story and, I hope, one day it will become a
+            story for me as well. 
+        </div>
+
+        <div class="choices">
+            <a href="a7.html">Continue Book of Sand</a>
+            <a href="a10.html">Branch to Garden of Forking Paths</a>
+        </div>
+    </main>
+
+    <div class="sand-container" id="sand-container"></div>
+
+    <footer>
+        &copy; 2026 Historical Library Experience
+    </footer>
+
+    <script>
+        // WORD-BY-WORD ANIMATION
+        const storyText = document.getElementById('story-text');
+        const words = storyText.textContent.split(/\s+/);
+        storyText.textContent = '';
+        words.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.classList.add('word');
+            span.textContent = word;
+            span.style.animationDelay = (i * 0.10) + 's';
+            storyText.appendChild(span);
+            storyText.appendChild(document.createTextNode(' '));
+        });
+
+        // GENERATE SAND GRAINS
+        const sandContainer = document.getElementById('sand-container');
+        for (let i = 0; i < 100; i++) {
+            const grain = document.createElement('div');
+            grain.classList.add('grain');
+
+            const x = Math.random() * window.innerWidth;
+            const sx = (Math.random() - 0.5) * 100; // slight horizontal drift
+            const duration = 5 + Math.random() * 5;
+
+            grain.style.left = x + 'px';
+            grain.style.setProperty('--sx', sx + 'px');
+            grain.style.animationDuration = duration + 's';
+            grain.style.animationDelay = Math.random() * 5 + 's';
+
+            sandContainer.appendChild(grain);
+        }
+    </script>
+</body>
+
+</html>
