@@ -115,16 +115,16 @@ words.forEach((word, i) => {
     span.classList.add('word');
     span.textContent = word;
 
-    // START FULLY OPAQUE
+    
     span.style.opacity = 1;
 
     const startX = Math.random() * (screenWidth - 100);
-    const startY = Math.random() * -200 - 50; // above viewport
+    const startY = Math.random() * -200 - 50; 
     span.style.left = startX + 'px';
     span.style.top = startY + 'px';
     document.body.appendChild(span);
 
-    // Animate falling and fading out
+    
     setTimeout(() => {
         span.style.transition = 'all 2s ease-in-out';
         const targetY = screenHeight*0.6 + Math.random()*30;
@@ -134,7 +134,7 @@ words.forEach((word, i) => {
 });
 
 
-// After all words have "fallen" and disappeared, show final readable line
+
 setTimeout(() => {
     const lineContainer = document.getElementById('lineContainer');
     words.forEach(word => {
@@ -145,7 +145,7 @@ setTimeout(() => {
     lineContainer.style.transition = 'opacity 2s ease';
     lineContainer.style.opacity = 1;
 
-    // remove falling words
+    
     document.querySelectorAll('.word').forEach(w => w.remove());
 }, words.length*150 + 2000);
 
@@ -153,3 +153,4 @@ setTimeout(() => {
 
 </body>
 </html>
+
