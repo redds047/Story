@@ -74,7 +74,6 @@ main {
     }
 }
 
-/* Navigation buttons */
 .nav-links {
     display: flex;
     justify-content: center;
@@ -107,7 +106,7 @@ footer {
     margin-top: 3rem;
 }
 
-/* Branching threads animation */
+
 .branch-container {
     position: fixed;
     inset: 0;
@@ -161,13 +160,13 @@ footer {
 <footer>© 2026 Historical Library Experience</footer>
 
 <script>
-    // Animate each word in text
+    
     const words = document.querySelectorAll('#story-text span');
     words.forEach((word, index) => {
         word.style.animationDelay = `${index * 0.15}s`;
     });
 
-    // Branching threads animation
+    
     const container = document.getElementById('branch-container');
     const branchCount = 22;
 
@@ -178,14 +177,14 @@ footer {
         const h = Math.random() * 250 + 100; // random height
         branch.style.setProperty('--h', h + 'px');
 
-        // random horizontal position
+        
         branch.style.left = Math.random() * 95 + 'vw';
 
-        // random rotation to create subtle forking effect
+     
         const rot = (Math.random() - 0.5) * 50; // -25 to +25 deg
         branch.style.transform = `rotate(${rot}deg)`;
 
-        // random animation delay
+
         branch.style.animationDelay = (Math.random() * 2) + 's';
 
         container.appendChild(branch);
@@ -194,4 +193,5 @@ footer {
 
 </body>
 </html>
+
 
