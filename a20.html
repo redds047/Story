@@ -16,7 +16,7 @@
         color: #3b2f2f;
     }
 
-    /* Background textures */
+ 
     body::before {
         content: "";
         position: fixed;
@@ -65,7 +65,7 @@
         animation: fadeInUp 0.8s forwards;
     }
 
-    /* Animate words one by one */
+   
     .story-block p span {
         opacity: 0;
         display: inline-block;
@@ -87,7 +87,7 @@
         }
     }
 
-    /* Navigation buttons */
+    
     .nav-links {
         display: flex;
         justify-content: center;
@@ -144,7 +144,7 @@
 </footer>
 
 <script>
-    // Animate each word sequentially
+   
     const words = document.querySelectorAll('#text span');
     words.forEach((word, index) => {
         word.style.animationDelay = `${index * 0.15}s`;
@@ -152,4 +152,5 @@
 </script>
 </body>
 </html>
+
 
