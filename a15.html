@@ -16,7 +16,7 @@ body {
   padding: 3rem 5%;
 }
 
-/* subtle paper texture */
+
 body::before {
   content: "";
   position: fixed;
@@ -36,14 +36,14 @@ header {
   margin-bottom: 4rem;
 }
 
-/* Story lines container */
+
 .story {
   max-width: 720px;
   margin: 0 auto;
   font-size: 1.2rem;
 }
 
-/* Each word appears individually */
+
 .word {
   opacity: 0;
   display: inline-block;
@@ -56,7 +56,7 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Choices at the end */
+
 .choices {
   text-align: center;
   margin: 4rem 0;
@@ -93,7 +93,7 @@ header {
 </div>
 
 <script>
-// The story text for the scroll page
+
 const storyText = `At first, his dreams were chaotic; then in a short while they became dialectic in nature. The stranger dreamed that he was in the center of a circular amphitheater which was more or less the burnt temple; clouds of taciturn students filled the tiers of seats; the faces of the farthest ones hung at a distance of many centuries and as high as the stars, but their features were completely precise. The man lectured his pupils on anatomy, cosmography, and magic: the faces listened anxiously and tried to answer understandingly.`;
 
 const container = document.getElementById('storyContainer');
@@ -110,3 +110,4 @@ words.forEach((word, i) => {
 
 </body>
 </html>
+
