@@ -99,7 +99,7 @@
         color:#4b2f2f;
     }
 
-    /* Cells container */
+    
     .cells-container {
         position: fixed;
         top:0;
@@ -167,30 +167,30 @@
 </footer>
 
 <script>
-    // Generate many cells randomly across the page
+    
     const container = document.getElementById('cells-container');
 
     for(let i=0; i<50; i++){
         const cell = document.createElement('div');
         cell.classList.add('cell');
 
-        // random starting position
+  
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
 
         cell.style.left = x + 'px';
         cell.style.top = y + 'px';
 
-        // random movement directions
+  
         const dx = (Math.random() - 0.5) * 200 + 'px';
         const dy = (Math.random() - 0.5) * 200 + 'px';
         cell.style.setProperty('--dx', dx);
         cell.style.setProperty('--dy', dy);
 
-        // random animation delay
+
         cell.style.animationDelay = (Math.random() * 5) + 's';
 
-        // random animation duration
+   
         cell.style.animationDuration = (4 + Math.random()*4) + 's';
 
         container.appendChild(cell);
@@ -198,7 +198,7 @@
 </script>
 
 <script>
-    // Animate each word sequentially
+   
     const words = document.querySelectorAll('#text span');
     words.forEach((word, index) => {
         word.style.animationDelay = `${index * 0.15}s`;
@@ -206,3 +206,4 @@
 </script>
 </body>
 </html>
+
