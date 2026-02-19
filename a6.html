@@ -191,7 +191,7 @@
     </footer>
 
     <script>
-        // WORD-BY-WORD ANIMATION
+       
         const storyText = document.getElementById('story-text');
         const words = storyText.textContent.split(/\s+/);
         storyText.textContent = '';
@@ -204,14 +204,14 @@
             storyText.appendChild(document.createTextNode(' '));
         });
 
-        // GENERATE SAND GRAINS
+        
         const sandContainer = document.getElementById('sand-container');
         for (let i = 0; i < 100; i++) {
             const grain = document.createElement('div');
             grain.classList.add('grain');
 
             const x = Math.random() * window.innerWidth;
-            const sx = (Math.random() - 0.5) * 100; // slight horizontal drift
+            const sx = (Math.random() - 0.5) * 100;
             const duration = 5 + Math.random() * 5;
 
             grain.style.left = x + 'px';
@@ -223,5 +223,6 @@
         }
     </script>
 </body>
+
 
 </html>
